@@ -1,4 +1,6 @@
 import cryptoRandomString from 'crypto-random-string';
+import crypto from 'crypto';
+
 
 // Utilizando cryptoRandomString:
 
@@ -26,6 +28,18 @@ const criptoAlphanumeric = cryptoRandomString({length: 16, type: "alphanumeric"}
 
 console.log(`cryptoRandomString tipo alphanumeric de 16 carácteres: ${criptoAlphanumeric}`);
 
-// El archivo RAR incluye una fotografía de la terminal generando los mismos tokens a través de crypto de Node
+// Utilizando el crypto de Node.js FAVOR IGNORAR IMAGEN ADJUNTA EN EL RAR
 
-// Para generar una string alfanumérica con el crypto de Node, se utiliza este codigo: require('crypto').randomBytes(64).toString('base64').replace(/[^a-z0-9]/gi,''))
+const encrypt = (tamanno, tipo) => {        
+  
+    const encrypted = crypto.randomBytes(tamanno).toString(tipo)
+  
+    return encrypted
+};
+
+console.log("\nEncryptado base 64:")
+console.log(encrypt(12, "base64"))
+console.log("\nEncryptado hex:")
+console.log(encrypt(8, "hex"))
+console.log("\nEnencryptado utf8:")
+console.log(encrypt(16, "utf8"))
